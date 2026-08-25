@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff6b45" />
+  <title>Okay — Бодоод, урамшууллаа аваарай</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <link rel="stylesheet" href="logo.css" />
+  <link rel="stylesheet" href="child-logo.css" />
+  <link rel="stylesheet" href="onboarding.css" />
+</head>
+<body>
+  <section class="auth-screen" id="authScreen">
+    <div class="auth-brand"><span class="logo-face" aria-hidden="true"><i class="wink"></i><i class="eye"></i><i class="smile"></i></span><span>O<span class="yellow-k">k</span>ay</span></div>
+    <div class="auth-decoration auth-one">＋</div><div class="auth-decoration auth-two">×</div><div class="auth-decoration auth-three">÷</div>
+    <article class="auth-card">
+      <div class="auth-illustration logo-large"><div class="logo-face" aria-hidden="true"><i class="wink"></i><i class="eye"></i><i class="smile"></i></div><b>K</b></div>
+      <div id="surveyStep">
+        <div class="survey-top"><span id="surveyCounter">1 / 10</span><button id="skipSurvey">Алгасах</button></div><div class="survey-progress"><i id="surveyProgressBar"></i></div>
+        <p class="eyebrow">ТАНИЛЦАХ АСУУЛГА</p><h1 id="surveyQuestion">Та Okay-г хаанаас сонссон бэ?</h1><p class="auth-description" id="surveyDescription">Танд илүү тохирсон суралцах туршлага бэлдэхэд тусална.</p>
+        <div class="survey-options" id="surveyOptions"></div><button class="auth-primary survey-next" id="surveyNext" disabled>Үргэлжлүүлэх <span>→</span></button>
+      </div>
+      <div id="phoneStep" hidden>
+        <p class="eyebrow">ТАВТАЙ МОРИЛ</p><h1>Okay-д нэвтрэх</h1><p class="auth-description">Утасны дугаараа оруулж баталгаажуулах код аваарай.</p>
+        <label class="phone-field"><span>Утасны дугаар</span><div><b>+976</b><input id="phoneInput" type="tel" inputmode="numeric" maxlength="8" placeholder="9911 2233" autocomplete="tel"></div><small>8 оронтой утасны дугаар оруулна уу.</small></label>
+        <button class="auth-primary" id="sendCodeBtn">Код авах <span>→</span></button><p class="auth-terms">Үргэлжлүүлснээр та үйлчилгээний нөхцөл болон нууцлалын бодлогыг зөвшөөрнө.</p>
+      </div>
+      <div id="codeStep" hidden>
+        <button class="auth-back" id="backToPhone">← Буцах</button><p class="eyebrow">БАТАЛГААЖУУЛАХ КОД</p><h1>Мессежээ шалгана уу</h1><p class="auth-description"><b id="maskedPhone">+976 99•• ••33</b> дугаарт илгээсэн 4 оронтой кодыг оруулна уу.</p>
+        <div class="otp-fields" id="otpFields"><input maxlength="1" inputmode="numeric" aria-label="Кодын 1-р орон"><input maxlength="1" inputmode="numeric" aria-label="Кодын 2-р орон"><input maxlength="1" inputmode="numeric" aria-label="Кодын 3-р орон"><input maxlength="1" inputmode="numeric" aria-label="Кодын 4-р орон"></div>
+        <small class="otp-demo">Prototype код: <b>1234</b></small><p class="otp-error" id="otpError"></p><button class="auth-primary" id="verifyCodeBtn">Нэвтрэх <span>→</span></button><button class="resend-btn" id="resendCodeBtn">Код дахин авах</button>
+      </div>
+    </article><p class="auth-help">Тусламж хэрэгтэй юу? <b>7700-OKAY</b></p>
+  </section>
+
+  <div class="app-shell" id="appShell" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Okay нүүр"><span class="logo-face" aria-hidden="true"><i class="wink"></i><i class="eye"></i><i class="smile"></i></span><span>O<span class="yellow-k">k</span>ay</span></a>
+      <nav class="nav" aria-label="Үндсэн цэс">
+        <button class="nav-item active" data-page="home"><span>⌂</span>Нүүр</button>
+        <button class="nav-item" data-page="problems"><span>✦</span>Бодлого</button>
+        <button class="nav-item" data-page="progress"><span>↗</span>Миний ахиц</button>
+        <button class="nav-item" data-page="rewards"><span>★</span>Урамшуулал</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-page="settings"><span>⚙</span>Тохиргоо</button>
+        <button class="profile-mini" id="profileBtn"><span class="avatar avatar-yellow">Т</span><span><b>Тэмүүлэн</b><small>5-р анги</small></span><span>›</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="Цэс нээх">☰</button>
+        <div class="role-switch" role="group" aria-label="Хэрэглэгч солих">
+          <button class="role active" data-role="child">Хүүхэд</button>
+          <button class="role" data-role="parent">Эцэг эх</button>
+        </div>
+        <div class="top-actions">
+          <button class="icon-btn" aria-label="Мэдэгдэл">♢<i></i></button>
+          <div class="balance"><span>₮</span><div><small>Миний үлдэгдэл</small><b id="balanceValue">18,500₮</b></div></div>
+        </div>
+      </header>
+
+      <section id="childView">
+        <div class="page active" id="home">
+          <section class="hero">
+            <div><p class="eyebrow">ӨГЛӨӨНИЙ МЭНД, ТЭМҮҮЛЭН! 👋</p><h1>Өнөөдөр бас нэг<br><em>гоё амжилт</em> бүтээцгээе.</h1><p>Өдөр бүр бага багаар — том амжилтын эхлэл.</p><button class="primary" data-page-link="problems">Бодлого бодох <span>→</span></button></div>
+            <div class="hero-art" aria-hidden="true"><div class="planet">÷<span>+</span><i>×</i></div><div class="orbit"></div><div class="star one">✦</div><div class="star two">✦</div></div>
+          </section>
+
+          <div class="stat-grid">
+            <article class="stat-card peach"><span class="stat-icon">🔥</span><div><small>Дараалсан өдөр</small><strong>7 <i>өдөр</i></strong><p>Хувийн дээд амжилт!</p></div></article>
+            <article class="stat-card purple"><span class="stat-icon">✓</span><div><small>Энэ 7 хоногт</small><strong>42 <i>бодлого</i></strong><p>Өмнөхөөс 12% илүү</p></div></article>
+            <article class="stat-card mint"><span class="stat-icon">₮</span><div><small>Нийт олсон</small><strong id="earnedValue">36,500₮</strong><p>Чи үнэхээр мундаг!</p></div></article>
+          </div>
+
+          <section class="section-block">
+            <div class="section-head"><div><h2>Үргэлжлүүлэн бодох</h2><p>Эхэлсэн багцаа дуусгаад шагналаа аваарай.</p></div><button class="text-btn" data-page-link="problems">Бүгдийг харах →</button></div>
+            <article class="continue-card">
+              <div class="subject-icon">123</div><div class="continue-copy"><span class="tag">МАТЕМАТИК · 5-Р АНГИ</span><h3>Олон оронтой тооны үйлдэл</h3><div class="progress-row"><div class="progress"><i style="width:65%"></i></div><b>13/20</b></div><p>Дахиад 7 бодлого бодоод <b>2,000₮</b> аваарай</p></div><button class="round-btn" data-page-link="problems">→</button>
+            </article>
+          </section>
+
+          <section class="section-block"><div class="section-head"><div><h2>Чамд санал болгох</h2><p>Өөрийн түвшинд тохирсон шинэ багцаас сонгоорой.</p></div></div><div class="pack-grid" id="homePacks"></div></section>
+        </div>
+
+        <div class="page" id="problems">
+          <div class="page-title"><div><p class="eyebrow">БОДЛОГЫН САН</p><h1>Юугаар ухаанаа сориулах вэ?</h1><p>Анги болон сэдвээ сонгоод бодож эхлээрэй.</p></div></div>
+          <div class="filters"><div class="grade-tabs"><button class="active" data-grade="all">Бүгд</button><button data-grade="3">3-р анги</button><button data-grade="4">4-р анги</button><button data-grade="5">5-р анги</button></div><select id="topicFilter" aria-label="Сэдэв"><option value="all">Бүх сэдэв</option><option value="Тоо бодлого">Тоо бодлого</option><option value="Геометр">Геометр</option><option value="Логик">Логик</option></select></div>
+          <div class="pack-grid large" id="packList"></div>
+        </div>
+
+        <div class="page" id="solver">
+          <button class="back-btn" id="backToProblems">← Бодлогын сан руу буцах</button>
+          <div class="solver-layout">
+            <section class="solver-main">
+              <div class="solver-head"><div><span class="tag" id="solverMeta">МАТЕМАТИК · 5-Р АНГИ</span><h1 id="solverTitle">Олон оронтой тооны үйлдэл</h1></div><div class="solver-reward"><small>50 бодлого × 500₮</small><b id="solverReward">25,000₮</b></div></div>
+              <div class="solver-progress"><div><span id="solverCount">Нийт 5 бодлого</span><b id="solverPercent">0 / 5 бөглөсөн</b></div><div class="progress"><i id="solverProgressBar" style="width:0%"></i></div></div>
+              <div class="all-questions" id="questionList"></div>
+              <div class="solver-actions batch-actions"><button class="outline-btn" id="clearAnswers">Хариуг цэвэрлэх</button><button class="primary check-answer" id="checkAllAnswers">Бүх хариуг шалгах →</button></div>
+            </section>
+            <aside class="solver-side"><div class="mascot-small">O<span>★</span></div><h3>Чи чадна аа!</h3><p>Тайван бодоод, үйлдлийн дарааллаа сайн хараарай.</p><div class="mini-score"><span><small>Зөв</small><b id="correctCount">0</b></span><span><small>Алдаа</small><b id="wrongCount">0</b></span></div></aside>
+          </div>
+        </div>
+
+        <div class="page" id="progress">
+          <div class="page-title"><p class="eyebrow">МИНИЙ АХИЦ</p><h1>Өдөр бүр өсөж байна</h1><p>Сүүлийн 7 хоногийн суралцсан хугацаа, амжилт.</p></div>
+          <div class="dashboard-grid"><article class="chart-card wide"><div class="card-head"><div><h3>Суралцсан хугацаа</h3><p>Нийт 3 цаг 25 минут</p></div><span class="trend">↑ 18%</span></div><div class="bar-chart" id="childChart"></div></article><article class="chart-card"><h3>Зөв хариултын хувь</h3><div class="donut"><span>86%<small>Маш сайн</small></span></div><div class="legend"><span><i class="correct"></i>Зөв 118</span><span><i class="wrong"></i>Алдаа 19</span></div></article></div>
+        </div>
+
+        <div class="page" id="rewards"><div class="reward-hero"><span>★</span><p>МИНИЙ УРАМШУУЛАЛ</p><h1 id="rewardBalance">18,500₮</h1><small>Авах боломжтой үлдэгдэл</small><button class="light-btn" id="withdrawBtn">Урамшуулал авах</button></div><section class="section-block"><div class="section-head"><div><h2>Орлого, зарлага</h2><p>Таны сүүлийн гүйлгээнүүд</p></div></div><div class="transactions" id="transactions"></div></section></div>
+
+        <div class="page" id="settings"><div class="page-title"><p class="eyebrow">ТОХИРГОО</p><h1>Миний бүртгэл</h1></div><div class="settings-grid"><article class="settings-card"><span class="avatar avatar-yellow big">Т</span><div><h3>Тэмүүлэн Бат</h3><p>5-р анги · Хүүхдийн эрх</p></div><button class="outline-btn">Засах</button></article><article class="settings-card column"><h3>Аппын тохиргоо</h3><label><span>Дууны эффект<small>Зөв хариултын дуу</small></span><input type="checkbox" checked></label><label><span>Өдөр тутмын сануулга<small>19:00 цагт</small></span><input type="checkbox" checked></label><label><span>Харанхуй горим<small>Дэлгэцийн өнгө</small></span><input type="checkbox" id="darkToggle"></label></article></div></div>
+      </section>
+
+      <section id="parentView" hidden>
+        <div class="parent-head"><div><p class="eyebrow">ЭЦЭГ ЭХИЙН ХЯНАЛТ</p><h1>Сайн байна уу, Бат аа 👋</h1><p>Хүүхдүүдийнхээ суралцах явцыг нэг дороос хараарай.</p></div><button class="outline-btn" id="addChildBtn">＋ Хүүхэд нэмэх</button></div>
+        <div class="child-tabs" id="childTabs"><button class="active" data-child="Тэмүүлэн"><span class="avatar avatar-yellow">Т</span><span><b>Тэмүүлэн</b><small>5-р анги</small></span></button><button data-child="Ану"><span class="avatar avatar-purple">А</span><span><b>Ану</b><small>3-р анги</small></span></button><button class="add-slot" id="addSlot">＋</button></div>
+        <div class="parent-summary"><article><span class="summary-icon orange">◷</span><div><small>Өнөөдөр суралцсан</small><strong id="todayTime">38 минут</strong><p>Зорилго: 45 минут</p></div></article><article><span class="summary-icon green">✓</span><div><small>Энэ 7 хоногт</small><strong id="weeklyProblems">42 бодлого</strong><p class="green-text">↑ 12% өссөн</p></div></article><article><span class="summary-icon blue">₮</span><div><small>Олсон урамшуулал</small><strong id="parentReward">6,500₮</strong><p>Таны төлбөрийн 50%</p></div></article></div>
+        <div class="dashboard-grid"><article class="chart-card wide"><div class="card-head"><div><h3>7 хоногийн суралцсан хугацаа</h3><p>Өдөрт зарцуулсан минут</p></div><select><option>Энэ 7 хоног</option></select></div><div class="bar-chart parent-chart" id="parentChart"></div></article><article class="chart-card"><div class="card-head"><div><h3>Сэдвийн ахиц</h3><p>Нийт гүйцэтгэл</p></div></div><div class="skill-list" id="skillList"></div></article></div>
+        <div class="dashboard-grid lower"><article class="chart-card wide"><div class="card-head"><div><h3>Сүүлийн идэвх</h3><p>Бодсон багц ба үр дүн</p></div><button class="text-btn">Бүгдийг харах</button></div><div class="activity-list" id="activityList"></div></article><article class="limit-card"><div class="limit-icon">♡</div><h3>Өдөр тутмын зорилго</h3><p>Тэмүүлэн өдөрт 45 минут суралцах зорилготой.</p><div class="goal-progress"><i></i></div><b>38 / 45 минут</b><button class="outline-btn">Зорилго өөрчлөх</button></article></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden><div class="modal"><button class="close" id="closeModal">×</button><div id="modalContent"></div></div></div>
+  <div class="toast" id="toast">Амжилттай!</div>
+  <script src="app.js"></script>
+</body>
+</html>
