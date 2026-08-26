@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="logo.css" />
   <link rel="stylesheet" href="child-logo.css" />
   <link rel="stylesheet" href="onboarding.css" />
+  <link rel="stylesheet" href="motivation.css" />
+  <link rel="stylesheet" href="friendly.css" />
 </head>
 <body>
   <section class="auth-screen" id="authScreen">
@@ -27,6 +29,10 @@
       </div>
       <div id="phoneStep" hidden>
         <p class="eyebrow">ТАВТАЙ МОРИЛ</p><h1>Okay-д нэвтрэх</h1><p class="auth-description">Утасны дугаараа оруулж баталгаажуулах код аваарай.</p>
+        <aside class="parent-reminder" aria-label="Эцэг эх, асран хамгаалагчид зориулсан санамж">
+          <span class="reminder-icon">💛</span>
+          <div><strong>Эцэг эх, асран хамгаалагч танд</strong><p>Okay-ийн зорилго нь хүүхдийг бодлогоо <b>өөрөө бодож, ойлгож сурахад</b> дэмжих юм.</p><p>Хүүхэд бодлого бодохдоо <b>тооны машин эсвэл AI хэрэгсэл</b> ашиглаж байгаа эсэхийг та өөрөө шалгаж, зохистой хяналт тавина уу.</p></div>
+        </aside>
         <label class="phone-field"><span>Утасны дугаар</span><div><b>+976</b><input id="phoneInput" type="tel" inputmode="numeric" maxlength="8" placeholder="9911 2233" autocomplete="tel"></div><small>8 оронтой утасны дугаар оруулна уу.</small></label>
         <button class="auth-primary" id="sendCodeBtn">Код авах <span>→</span></button><p class="auth-terms">Үргэлжлүүлснээр та үйлчилгээний нөхцөл болон нууцлалын бодлогыг зөвшөөрнө.</p>
       </div>
@@ -42,13 +48,13 @@
     <aside class="sidebar">
       <a class="brand" href="#" aria-label="Okay нүүр"><span class="logo-face" aria-hidden="true"><i class="wink"></i><i class="eye"></i><i class="smile"></i></span><span>O<span class="yellow-k">k</span>ay</span></a>
       <nav class="nav" aria-label="Үндсэн цэс">
-        <button class="nav-item active" data-page="home"><span>⌂</span>Нүүр</button>
-        <button class="nav-item" data-page="problems"><span>✦</span>Бодлого</button>
-        <button class="nav-item" data-page="progress"><span>↗</span>Миний ахиц</button>
-        <button class="nav-item" data-page="rewards"><span>★</span>Урамшуулал</button>
+        <button class="nav-item active" data-page="home"><span>🏠</span>Нүүр</button>
+        <button class="nav-item" data-page="problems"><span>🧩</span>Бодлого</button>
+        <button class="nav-item" data-page="progress"><span>🚀</span>Миний ахиц</button>
+        <button class="nav-item" data-page="rewards"><span>🎁</span>Урамшуулал</button>
       </nav>
       <div class="sidebar-bottom">
-        <button class="nav-item" data-page="settings"><span>⚙</span>Тохиргоо</button>
+        <button class="nav-item" data-page="settings"><span>⚙️</span>Тохиргоо</button>
         <button class="profile-mini" id="profileBtn"><span class="avatar avatar-yellow">Т</span><span><b>Тэмүүлэн</b><small>5-р анги</small></span><span>›</span></button>
       </div>
     </aside>
@@ -68,8 +74,9 @@
 
       <section id="childView">
         <div class="page active" id="home">
-          <section class="hero">
-            <div><p class="eyebrow">ӨГЛӨӨНИЙ МЭНД, ТЭМҮҮЛЭН! 👋</p><h1>Өнөөдөр бас нэг<br><em>гоё амжилт</em> бүтээцгээе.</h1><p>Өдөр бүр бага багаар — том амжилтын эхлэл.</p><button class="primary" data-page-link="problems">Бодлого бодох <span>→</span></button></div>
+          <section class="hero hero-with-reward">
+            <div class="money-motivation" aria-label="Өнөөдрийн мөнгөн урамшуулал"><span class="money-icon">₮</span><div><small>ӨНӨӨДӨР АВАХ БОЛОМЖТОЙ</small><strong>5,000₮</strong></div><span class="money-rate">1 зөв бодлого = 500₮</span></div>
+            <div><p class="eyebrow">ӨГЛӨӨНИЙ МЭНД, ТЭМҮҮЛЭН! 👋</p><h1>Тоглоод, бодоод,<br><em>шагналаа цуглуулъя!</em></h1><p>Зөв бодлого бүр чамайг зорилгодоо нэг алхам ойртуулна.</p><button class="primary" data-page-link="problems">Тоглож эхлэх <span>→</span></button></div>
             <div class="hero-art" aria-hidden="true"><div class="planet">÷<span>+</span><i>×</i></div><div class="orbit"></div><div class="star one">✦</div><div class="star two">✦</div></div>
           </section>
 
@@ -91,7 +98,7 @@
 
         <div class="page" id="problems">
           <div class="page-title"><div><p class="eyebrow">БОДЛОГЫН САН</p><h1>Юугаар ухаанаа сориулах вэ?</h1><p>Анги болон сэдвээ сонгоод бодож эхлээрэй.</p></div></div>
-          <div class="filters"><div class="grade-tabs"><button class="active" data-grade="all">Бүгд</button><button data-grade="3">3-р анги</button><button data-grade="4">4-р анги</button><button data-grade="5">5-р анги</button></div><select id="topicFilter" aria-label="Сэдэв"><option value="all">Бүх сэдэв</option><option value="Тоо бодлого">Тоо бодлого</option><option value="Геометр">Геометр</option><option value="Логик">Логик</option></select></div>
+          <div class="filters"><div class="grade-tabs"><button class="active" data-grade="all">Бүгд</button><button data-grade="3">3-р анги</button><button data-grade="4">4-р анги</button><button data-grade="5">5-р анги</button></div><select id="topicFilter" aria-label="Сэдэв"><option value="all">Бүх сэдэв</option><option value="Тоо бодлого">Тоо бодлого</option><option value="Геометр">Геометр</option><option value="Логик">Логик</option><option value="Хөдөлгөөн">Хөдөлгөөний бодлого</option><option value="Хэрчим">Хэрчмийн бодлого</option></select></div>
           <div class="pack-grid large" id="packList"></div>
         </div>
 
