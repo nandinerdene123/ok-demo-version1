@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="onboarding.css" />
   <link rel="stylesheet" href="motivation.css" />
   <link rel="stylesheet" href="friendly.css" />
+  <link rel="stylesheet" href="features.css" />
 </head>
 <body>
   <section class="auth-screen" id="authScreen">
@@ -51,11 +52,12 @@
         <button class="nav-item active" data-page="home"><span>🏠</span>Нүүр</button>
         <button class="nav-item" data-page="problems"><span>🧩</span>Бодлого</button>
         <button class="nav-item" data-page="progress"><span>🚀</span>Миний ахиц</button>
+        <button class="nav-item" data-page="mistakes"><span>🩹</span>Алдаагаа засах <i class="mistake-badge" id="mistakeBadge">0</i></button>
         <button class="nav-item" data-page="rewards"><span>🎁</span>Урамшуулал</button>
       </nav>
       <div class="sidebar-bottom">
         <button class="nav-item" data-page="settings"><span>⚙️</span>Тохиргоо</button>
-        <button class="profile-mini" id="profileBtn"><span class="avatar avatar-yellow">Т</span><span><b>Тэмүүлэн</b><small>5-р анги</small></span><span>›</span></button>
+        <button class="profile-mini" id="profileBtn"><span class="avatar avatar-yellow" data-profile-avatar>Т</span><span><b data-profile-name>Тэмүүлэн</b><small>5-р анги</small></span><span>›</span></button>
       </div>
     </aside>
 
@@ -81,7 +83,7 @@
           </section>
 
           <div class="stat-grid">
-            <article class="stat-card peach"><span class="stat-icon">🔥</span><div><small>Дараалсан өдөр</small><strong>7 <i>өдөр</i></strong><p>Хувийн дээд амжилт!</p></div></article>
+            <article class="stat-card peach"><span class="stat-icon">🔥</span><div><small>Дараалсан өдөр</small><strong><span id="dayStreak">7</span> <i>өдөр</i></strong><p id="streakMessage">Өнөөдрийн streak-ээ хадгалаарай!</p></div></article>
             <article class="stat-card purple"><span class="stat-icon">✓</span><div><small>Энэ 7 хоногт</small><strong>42 <i>бодлого</i></strong><p>Өмнөхөөс 12% илүү</p></div></article>
             <article class="stat-card mint"><span class="stat-icon">₮</span><div><small>Нийт олсон</small><strong id="earnedValue">36,500₮</strong><p>Чи үнэхээр мундаг!</p></div></article>
           </div>
@@ -98,6 +100,7 @@
 
         <div class="page" id="problems">
           <div class="page-title"><div><p class="eyebrow">БОДЛОГЫН САН</p><h1>Юугаар ухаанаа сориулах вэ?</h1><p>Анги болон сэдвээ сонгоод бодож эхлээрэй.</p></div></div>
+          <aside class="reward-rule"><span>💰</span><div><strong>Хүүхдийн урамшуулал хэрхэн бодогдох вэ?</strong><p>Багцын үнийн 50% нь хүүхдийн дээд урамшуулал. 25,000₮ багцыг 100% зөв бодвол 12,500₮; 80% зөв бодвол 10,000₮ авна.</p></div></aside>
           <div class="filters"><div class="grade-tabs"><button class="active" data-grade="all">Бүгд</button><button data-grade="3">3-р анги</button><button data-grade="4">4-р анги</button><button data-grade="5">5-р анги</button></div><select id="topicFilter" aria-label="Сэдэв"><option value="all">Бүх сэдэв</option><option value="Тоо бодлого">Тоо бодлого</option><option value="Геометр">Геометр</option><option value="Логик">Логик</option><option value="Хөдөлгөөн">Хөдөлгөөний бодлого</option><option value="Хэрчим">Хэрчмийн бодлого</option></select></div>
           <div class="pack-grid large" id="packList"></div>
         </div>
@@ -106,7 +109,7 @@
           <button class="back-btn" id="backToProblems">← Бодлогын сан руу буцах</button>
           <div class="solver-layout">
             <section class="solver-main">
-              <div class="solver-head"><div><span class="tag" id="solverMeta">МАТЕМАТИК · 5-Р АНГИ</span><h1 id="solverTitle">Олон оронтой тооны үйлдэл</h1></div><div class="solver-reward"><small>50 бодлого × 500₮</small><b id="solverReward">25,000₮</b></div></div>
+              <div class="solver-head"><div><span class="tag" id="solverMeta">МАТЕМАТИК · 5-Р АНГИ</span><h1 id="solverTitle">Олон оронтой тооны үйлдэл</h1></div><div class="solver-reward"><small id="solverRewardLabel">100% зөв бол авах дээд дүн</small><b id="solverReward">12,500₮</b></div></div>
               <div class="solver-progress"><div><span id="solverCount">Нийт 5 бодлого</span><b id="solverPercent">0 / 5 бөглөсөн</b></div><div class="progress"><i id="solverProgressBar" style="width:0%"></i></div></div>
               <div class="all-questions" id="questionList"></div>
               <div class="solver-actions batch-actions"><button class="outline-btn" id="clearAnswers">Хариуг цэвэрлэх</button><button class="primary check-answer" id="checkAllAnswers">Бүх хариуг шалгах →</button></div>
@@ -120,9 +123,15 @@
           <div class="dashboard-grid"><article class="chart-card wide"><div class="card-head"><div><h3>Суралцсан хугацаа</h3><p>Нийт 3 цаг 25 минут</p></div><span class="trend">↑ 18%</span></div><div class="bar-chart" id="childChart"></div></article><article class="chart-card"><h3>Зөв хариултын хувь</h3><div class="donut"><span>86%<small>Маш сайн</small></span></div><div class="legend"><span><i class="correct"></i>Зөв 118</span><span><i class="wrong"></i>Алдаа 19</span></div></article></div>
         </div>
 
+        <div class="page" id="mistakes">
+          <div class="page-title"><p class="eyebrow">АЛДААГАА ЗАСАХ</p><h1>Алдаа бол сурах шинэ боломж 🌱</h1><p>Өмнө алдсан бодлогуудаа дахин бодож, гүйцэтгэлийн хувиа дээшлүүлээрэй.</p></div>
+          <div class="mistake-summary"><span>🩹</span><div><small>ЗАСАХ БОДЛОГО</small><strong id="mistakeCount">0 бодлого</strong></div><button class="primary" id="retryMistakes" disabled>Дахин бодох →</button></div>
+          <div class="mistake-list" id="mistakeList"></div>
+        </div>
+
         <div class="page" id="rewards"><div class="reward-hero"><span>★</span><p>МИНИЙ УРАМШУУЛАЛ</p><h1 id="rewardBalance">18,500₮</h1><small>Авах боломжтой үлдэгдэл</small><button class="light-btn" id="withdrawBtn">Урамшуулал авах</button></div><section class="section-block"><div class="section-head"><div><h2>Орлого, зарлага</h2><p>Таны сүүлийн гүйлгээнүүд</p></div></div><div class="transactions" id="transactions"></div></section></div>
 
-        <div class="page" id="settings"><div class="page-title"><p class="eyebrow">ТОХИРГОО</p><h1>Миний бүртгэл</h1></div><div class="settings-grid"><article class="settings-card"><span class="avatar avatar-yellow big">Т</span><div><h3>Тэмүүлэн Бат</h3><p>5-р анги · Хүүхдийн эрх</p></div><button class="outline-btn">Засах</button></article><article class="settings-card column"><h3>Аппын тохиргоо</h3><label><span>Дууны эффект<small>Зөв хариултын дуу</small></span><input type="checkbox" checked></label><label><span>Өдөр тутмын сануулга<small>19:00 цагт</small></span><input type="checkbox" checked></label><label><span>Харанхуй горим<small>Дэлгэцийн өнгө</small></span><input type="checkbox" id="darkToggle"></label></article></div></div>
+        <div class="page" id="settings"><div class="page-title"><p class="eyebrow">ТОХИРГОО</p><h1>Миний бүртгэл</h1></div><div class="settings-grid"><article class="settings-card"><span class="avatar avatar-yellow big" data-profile-avatar>Т</span><div><h3 data-profile-name>Тэмүүлэн</h3><p>5-р анги · Хүүхдийн эрх</p></div><button class="outline-btn" id="editProfileBtn">Зураг, nickname засах</button></article><article class="settings-card column"><h3>Аппын тохиргоо</h3><label><span>Дууны эффект<small>Зөв хариултын дуу</small></span><input type="checkbox" checked></label><label><span>Өдөр тутмын сануулга<small>19:00 цагт</small></span><input type="checkbox" checked></label><label><span>Харанхуй горим<small>Дэлгэцийн өнгө</small></span><input type="checkbox" id="darkToggle"></label></article></div></div>
       </section>
 
       <section id="parentView" hidden>
