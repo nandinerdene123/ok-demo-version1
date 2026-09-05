@@ -120,7 +120,12 @@
 
         <div class="page" id="progress">
           <div class="page-title"><p class="eyebrow">МИНИЙ АХИЦ</p><h1>Өдөр бүр өсөж байна</h1><p>Сүүлийн 7 хоногийн суралцсан хугацаа, амжилт.</p></div>
-          <div class="dashboard-grid"><article class="chart-card wide"><div class="card-head"><div><h3>Суралцсан хугацаа</h3><p>Нийт 3 цаг 25 минут</p></div><span class="trend">↑ 18%</span></div><div class="bar-chart" id="childChart"></div></article><article class="chart-card"><h3>Зөв хариултын хувь</h3><div class="donut"><span>86%<small>Маш сайн</small></span></div><div class="legend"><span><i class="correct"></i>Зөв 118</span><span><i class="wrong"></i>Алдаа 19</span></div></article></div>
+          <div class="progress-overview"><article><span>⏱️</span><div><small>НИЙТ СУРАЛЦСАН</small><strong>3 цаг 25 минут</strong><p>Өмнөх 7 хоногоос +18%</p></div></article><article><span>🧩</span><div><small>НИЙТ БОДСОН</small><strong id="totalSolved">137 бодлого</strong><p>Энэ 7 хоногт 42 бодлого</p></div></article><article><span>🎯</span><div><small>ЗӨВ ХАРИУЛТ</small><strong id="accuracyValue">86%</strong><p>Зорилго хүртэл 4%</p></div></article></div>
+          <div class="dashboard-grid"><article class="chart-card wide"><div class="card-head"><div><h3>Өдөр бүр суралцсан хугацаа</h3><p>Баганын дээр тухайн өдөр хийсэн минут харагдана</p></div><span class="trend">↑ 18%</span></div><div class="bar-chart" id="childChart"></div></article><article class="chart-card"><h3>Зөв хариултын хувь</h3><div class="donut" id="progressDonut"><span><b id="donutPercent">86%</b><small>Маш сайн</small></span></div><div class="legend"><span><i class="correct"></i><b id="correctTotal">Зөв 118</b></span><span><i class="wrong"></i><b id="wrongTotal">Алдаа 19</b></span></div></article></div>
+        </div>
+
+        <div class="page" id="results">
+          <section class="result-card"><div class="result-celebration" id="resultEmoji">🎉</div><p class="eyebrow">БАГЦЫН ҮР ДҮН</p><h1 id="resultTitle">Мундаг байлаа!</h1><p id="resultMessage">Хичээл зүтгэл бүр чамайг улам хүчтэй болгоно.</p><div class="result-score"><div><small>ЗӨВ ХАРИУЛТ</small><strong id="resultCorrect">0 / 50</strong></div><div><small>ГҮЙЦЭТГЭЛ</small><strong id="resultPercent">0%</strong></div><div class="money"><small>ОДОО АВАХ МӨНГӨ</small><strong id="resultMoney">0₮</strong></div></div><div class="reward-meter"><i id="resultMeter"></i></div><p class="result-max" id="resultMax">Бүгдийг зөв болговол 12,500₮ авна</p><div class="result-actions"><button class="outline-btn" id="fixResultMistakes">🩹 Алдаагаа засаад мөнгөө нэмэх</button><button class="primary" id="claimResultReward">💰 Одоогийн урамшууллаа авах</button></div></section>
         </div>
 
         <div class="page" id="mistakes">
