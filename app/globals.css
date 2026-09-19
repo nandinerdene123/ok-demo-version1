@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", "Segoe UI", Arial, sans-serif;
+  --color-ink: #27324a;
+  --color-muted: #72809b;
+  --color-page: #f4f8ff;
+  --color-brand: #6f83e8;
+  --color-brand-dark: #5265bd;
+  --color-sun: #ffe681;
+  --color-mint: #43b98a;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 16% 8%, #fff1b8 0 88px, transparent 89px),
+    radial-gradient(circle at 94% 28%, #dff5ef 0 118px, transparent 119px),
+    #f4f8ff;
+  color: #27324a;
+  font-family: var(--font-sans);
+}
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-9px) rotate(3deg); }
+}
+@keyframes pop {
+  0% { transform: scale(.72); opacity: 0; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, 18px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+.animate-float { animation: floaty 4s ease-in-out infinite; }
+.animate-pop { animation: pop .4s ease both; }
+.animate-toast { animation: toast-in .2s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
+}
