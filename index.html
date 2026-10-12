@@ -99,9 +99,9 @@
         </div>
 
         <div class="page" id="problems">
-          <div class="page-title"><div><p class="eyebrow">БОДЛОГЫН САН</p><h1>Юугаар ухаанаа сориулах вэ?</h1><p>Анги болон сэдвээ сонгоод бодож эхлээрэй.</p></div></div>
+          <div class="page-title"><div><p class="eyebrow">БОДЛОГЫН САН</p><h1>Юугаар ухаанаа сориулах вэ?</h1><p>Бүлгээ сонгоод бодож эхлээрэй.</p></div></div>
           <aside class="reward-rule"><span>💰</span><div><strong>Хүүхдийн урамшуулал хэрхэн бодогдох вэ?</strong><p>Багцын үнийн 50% нь хүүхдийн дээд урамшуулал. 25,000₮ багцыг 100% зөв бодвол 12,500₮; 80% зөв бодвол 10,000₮ авна.</p></div></aside>
-          <div class="filters"><div class="grade-tabs"><button class="active" data-grade="all">Бүгд</button><button data-grade="3">3-р анги</button><button data-grade="4">4-р анги</button><button data-grade="5">5-р анги</button></div><select id="topicFilter" aria-label="Сэдэв"><option value="all">Бүх сэдэв</option><option value="Тоо бодлого">Тоо бодлого</option><option value="Геометр">Геометр</option><option value="Логик">Логик</option><option value="Хөдөлгөөн">Хөдөлгөөний бодлого</option><option value="Хэрчим">Хэрчмийн бодлого</option></select></div>
+          <div class="filters"><div class="grade-tabs"><button class="active" data-chapter="1">1 дүгээр бүлэг</button><button data-chapter="2">2 дугаар бүлэг</button><button data-chapter="3">3 дугаар бүлэг</button></div></div>
           <div class="pack-grid large" id="packList"></div>
         </div>
 
@@ -140,8 +140,8 @@
       </section>
 
       <section id="parentView" hidden>
-        <div class="parent-head"><div><p class="eyebrow">ЭЦЭГ ЭХИЙН ХЯНАЛТ</p><h1>Сайн байна уу, Бат аа 👋</h1><p>Хүүхдүүдийнхээ суралцах явцыг нэг дороос хараарай.</p></div><button class="outline-btn" id="addChildBtn">＋ Хүүхэд нэмэх</button></div>
-        <div class="child-tabs" id="childTabs"><button class="active" data-child="Тэмүүлэн"><span class="avatar avatar-yellow">Т</span><span><b>Тэмүүлэн</b><small>5-р анги</small></span></button><button data-child="Ану"><span class="avatar avatar-purple">А</span><span><b>Ану</b><small>3-р анги</small></span></button><button class="add-slot" id="addSlot">＋</button></div>
+        <div class="parent-head"><div><p class="eyebrow">ЭЦЭГ ЭХИЙН ХЯНАЛТ</p><h1>Сайн байна уу, Бат аа 👋</h1><p>Хүүхдийнхээ суралцах явцыг нэг дороос хараарай.</p></div><button class="outline-btn" id="addChildBtn">＋ Хүүхэд нэмэх</button></div>
+        <div class="child-tabs" id="childTabs"><button class="active" data-child="Тэмүүлэн"><span class="avatar avatar-yellow">Т</span><span><b>Тэмүүлэн</b><small>5-р анги</small></span></button><button class="add-slot" id="addSlot">＋</button></div>
         <div class="parent-summary"><article><span class="summary-icon orange">◷</span><div><small>Өнөөдөр суралцсан</small><strong id="todayTime">38 минут</strong><p>Зорилго: 45 минут</p></div></article><article><span class="summary-icon green">✓</span><div><small>Энэ 7 хоногт</small><strong id="weeklyProblems">42 бодлого</strong><p class="green-text">↑ 12% өссөн</p></div></article><article><span class="summary-icon blue">₮</span><div><small>Олсон урамшуулал</small><strong id="parentReward">6,500₮</strong><p>Таны төлбөрийн 50%</p></div></article></div>
         <div class="dashboard-grid"><article class="chart-card wide"><div class="card-head"><div><h3>7 хоногийн суралцсан хугацаа</h3><p>Өдөрт зарцуулсан минут</p></div><select><option>Энэ 7 хоног</option></select></div><div class="bar-chart parent-chart" id="parentChart"></div></article><article class="chart-card"><div class="card-head"><div><h3>Сэдвийн ахиц</h3><p>Нийт гүйцэтгэл</p></div></div><div class="skill-list" id="skillList"></div></article></div>
         <div class="dashboard-grid lower"><article class="chart-card wide"><div class="card-head"><div><h3>Сүүлийн идэвх</h3><p>Бодсон багц ба үр дүн</p></div><button class="text-btn">Бүгдийг харах</button></div><div class="activity-list" id="activityList"></div></article><article class="limit-card"><div class="limit-icon">♡</div><h3>Өдөр тутмын зорилго</h3><p>Тэмүүлэн өдөрт 45 минут суралцах зорилготой.</p><div class="goal-progress"><i></i></div><b>38 / 45 минут</b><button class="outline-btn">Зорилго өөрчлөх</button></article></div>

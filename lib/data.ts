@@ -1,7 +1,8 @@
 export type Pack = {
   id: number;
   title: string;
-  grade: 3 | 4 | 5;
+  grade: 5;
+  chapter: 1 | 2 | 3;
   topic: string;
   count: number;
   price: number;
@@ -12,21 +13,15 @@ export type Pack = {
 export type Question = { text: string; answer: number };
 
 export const packs: Pack[] = [
-  { id: 1, title: "Холимог үйлдэл ба тэгшитгэл", grade: 5, topic: "Тоо бодлого", count: 50, price: 25000, color: "purple", icons: ["🔢", "✖️", "➗"] },
-  { id: 2, title: "Талбай, периметр ба эзлэхүүн", grade: 5, topic: "Геометр", count: 50, price: 25000, color: "green", icons: ["📐", "🟦", "📏"] },
-  { id: 3, title: "Ахисан түвшний логик сорил", grade: 5, topic: "Логик", count: 50, price: 25000, color: "orange", icons: ["🧠", "💡", "❓"] },
-  { id: 4, title: "Олон үйлдэлт илэрхийлэл", grade: 4, topic: "Тоо бодлого", count: 50, price: 25000, color: "orange", icons: ["➕", "✖️", "🧮"] },
-  { id: 5, title: "Бутархай ба хэсгийн бодлого", grade: 4, topic: "Тоо бодлого", count: 50, price: 25000, color: "purple", icons: ["🍕", "½", "¼"] },
-  { id: 6, title: "Хэмжигдэхүүн ба дүрсний бодлого", grade: 3, topic: "Геометр", count: 50, price: 25000, color: "green", icons: ["📏", "⏰", "📐"] },
-  { id: 7, title: "Олон алхамт тоон бодлого", grade: 3, topic: "Тоо бодлого", count: 50, price: 25000, color: "orange", icons: ["🍎", "📦", "🛒"] },
-  { id: 8, title: "Дарааллыг олоорой", grade: 3, topic: "Логик", count: 50, price: 25000, color: "purple", icons: ["1️⃣", "2️⃣", "❓"] },
-  { id: 9, title: "Зам, хурд, хугацааны бодлого", grade: 5, topic: "Хөдөлгөөн", count: 50, price: 25000, color: "orange", icons: ["🚗", "🛣️", "⏱️"] },
-  { id: 10, title: "Хэрчмийн урт ба хэсгүүд", grade: 4, topic: "Хэрчим", count: 50, price: 25000, color: "green", icons: ["📍", "📏", "📍"] },
+  { id: 1, title: "Холимог үйлдэл ба тэгшитгэл", grade: 5, chapter: 1, topic: "Тоо бодлого", count: 50, price: 25000, color: "purple", icons: ["🔢", "✖️", "➗"] },
+  { id: 2, title: "Талбай, периметр ба эзлэхүүн", grade: 5, chapter: 2, topic: "Геометр", count: 50, price: 25000, color: "green", icons: ["📐", "🟦", "📏"] },
+  { id: 3, title: "Ахисан түвшний логик сорил", grade: 5, chapter: 3, topic: "Логик", count: 50, price: 25000, color: "orange", icons: ["🧠", "💡", "❓"] },
+  { id: 9, title: "Зам, хурд, хугацааны бодлого", grade: 5, chapter: 3, topic: "Хөдөлгөөн", count: 50, price: 25000, color: "orange", icons: ["🚗", "🛣️", "⏱️"] },
 ];
 
 export const surveyQuestions = [
   { q: "Та Okay-г хаанаас сонссон бэ?", d: "Танд илүү тохирсон суралцах туршлага бэлдэхэд тусална.", options: [["📱", "Сошиал медиа"], ["👨‍👩‍👧", "Найз, гэр бүлээс"], ["🏫", "Сургууль, багшаас"], ["🔎", "Интернэт хайлтаас"]] },
-  { q: "Хүүхэд тань хэддүгээр ангид сурдаг вэ?", d: "Ангид нь тохирсон бодлогыг санал болгоно.", options: [["3", "3-р анги"], ["4", "4-р анги"], ["5", "5-р анги"]] },
+  { q: "Хүүхэд тань хэддүгээр ангид сурдаг вэ?", d: "5-р ангийн бодлогуудыг санал болгоно.", options: [["5", "5-р анги"]] },
   { q: "Okay-г хэн ашиглах вэ?", d: "Тохирох профайлыг автоматаар бэлдье.", options: [["🧒", "Миний хүүхэд"], ["👧", "Би өөрөө"], ["👨‍👩‍👧", "Хэд хэдэн хүүхэд"]] },
   { q: "Математикийн одоогийн түвшин ямар вэ?", d: "Хэт амархан эсвэл хэт хүнд бодлого санал болгохгүй.", options: [["🌱", "Дэмжлэг хэрэгтэй"], ["🙂", "Дунд зэрэг"], ["🚀", "Сайн, ахисан"]] },
   { q: "Аль төрлийн бодлогод илүү дуртай вэ?", d: "Дуртай сэдвийг нүүр хэсэгт түрүүлж харуулна.", options: [["🔢", "Тоо, үйлдэл"], ["📐", "Геометр"], ["🧩", "Логик, сэтгэх чадвар"], ["✨", "Бүгдэд нь"]] },
@@ -41,11 +36,11 @@ export const workedExamples: Record<number, { question: string; steps: string[];
   1: { question: "x + 245 = 600. x хэд вэ?", steps: ["Үл мэдэгдэх x-ийг ганцааранг нь үлдээнэ.", "600-аас 245-ыг хасна: 600 − 245 = 355.", "355 + 245 = 600 гэж шалгана."], answer: "x = 355" },
   2: { question: "Урт нь 12 см, өргөн нь 5 см тэгш өнцөгтийн талбай хэд вэ?", steps: ["Талбайн томьёо: урт × өргөн.", "12 × 5 = 60 гэж үржүүлнэ.", "Нэгжийг см² гэж бичнэ."], answer: "60 см²" },
   3: { question: "3, 6, 12, 24, ?", steps: ["Зүй тогтлыг ажиглана.", "Тоо бүр 2 дахин их байна.", "24 × 2 = 48."], answer: "48" },
+  9: { question: "Машин цагт 60 км хурдтай 3 цаг явбал хэдэн км зам туулах вэ?", steps: ["Зам олох томьёо: зам = хурд × хугацаа.", "Хурд 60 км/цаг, хугацаа 3 цаг.", "60 × 3 = 180."], answer: "180 км" },
 };
 
 export const childData = {
   "Тэмүүлэн": { time: "38 минут", weekly: "42 бодлого", reward: "6,500₮", bars: [25, 42, 31, 55, 46, 70, 63], skills: [["Тоо бодлого", 88], ["Геометр", 72], ["Логик", 64]] as [string, number][] },
-  "Ану": { time: "24 минут", weekly: "31 бодлого", reward: "4,200₮", bars: [18, 35, 22, 40, 30, 52, 44], skills: [["Тоо бодлого", 78], ["Геометр", 84], ["Логик", 70]] as [string, number][] },
 };
 
 export function buildQuestionBank(pack: Pack): Question[] {
@@ -57,26 +52,14 @@ export function buildQuestionBank(pack: Pack): Question[] {
       const a = 8 + i, b = 5 + (i % 8);
       text = i % 2 ? `Урт ${a} см, өргөн ${b} см тэгш өнцөгтийн талбай хэд вэ?` : `Урт ${a} см, өргөн ${b} см тэгш өнцөгтийн периметр хэд вэ?`;
       answer = i % 2 ? a * b : 2 * (a + b);
-    } else if (pack.id === 3 || pack.id === 8) {
+    } else if (pack.id === 3) {
       const step = 2 + (i % 6), start = i + 1;
       text = `${start}, ${start + step}, ${start + step * 2}, ${start + step * 3}, ? дараагийн тоо`;
       answer = start + step * 4;
-    } else if (pack.id === 5) {
-      const den = [2, 4, 5, 8][i % 4], whole = den * (10 + i);
-      text = `${whole}-ын 1/${den} нь хэд вэ?`;
-      answer = whole / den;
-    } else if (pack.id === 6) {
-      const meters = 2 + (i % 8), centimeters = 10 + i * 3;
-      text = `${meters} м ${centimeters} см нь нийт хэдэн см вэ?`;
-      answer = meters * 100 + centimeters;
     } else if (pack.id === 9) {
       const speed = 30 + (i % 7) * 5, time = 2 + (i % 4);
       text = `Машин цагт ${speed} км хурдтай ${time} цаг явбал хэдэн км зам туулах вэ?`;
       answer = speed * time;
-    } else if (pack.id === 10) {
-      const first = 15 + i, second = 8 + (i % 12);
-      text = `AB хэрчим ${first + second} см. AC нь ${first} см бол CB хэдэн см вэ?`;
-      answer = second;
     } else {
       const a = 20 + i, b = 3 + (i % 7), c = 12 + i;
       text = i % 2 ? `${a} × ${b} + ${c * 4} ÷ 4 = ?` : `(${a + c} − ${c}) × ${b} = ?`;
